@@ -24,11 +24,11 @@
 var NMO_NormalMap = new function(){
 	
 	this.getInitialStrength = function(){
-		return 2.5;
+		return 4.3;
 	};
 
 	this.getInitialLevel = function(){
-		return 7;
+		return 5;
 	};
 
 	this.getInitialSmoothing = function(){
@@ -36,7 +36,7 @@ var NMO_NormalMap = new function(){
 	};
 
 	this.getInitialNormalType = function(){
-		return "sobel";
+		return "scharr";
 	};
 
 	this.getInitialInvertRGS = function(){
@@ -59,7 +59,7 @@ var NMO_NormalMap = new function(){
 
 	this.getNextPowerOf2 = function(nmb){
 		i = 2;
-		while(i < Math.pow(2,14)){
+		while(i < Math.pow(2,16)){
 			i *= 2;
 			if(i >= nmb)
 				return i;
@@ -138,19 +138,19 @@ var NMO_NormalMap = new function(){
 		
 		else if (element == "strength"){
 			strength = v;
-			NMO_RenderNormalview.normalmap_uniforms["dz"].value = 1.0 / v * (1.0 + Math.pow(2.0, document.getElementById('level_nmb').value));
-			NMO_RenderNormalview.normalmap_from_pictures_uniforms["dz"].value = 1.0 / v * (1.0 + Math.pow(2.0, document.getElementById('level_nmb').value));
+			NMO_RenderNormalview.normalmap_uniforms["dz"].value = 1.8 / v * (1.7 + Math.pow(2.0, document.getElementById('level_nmb').value));
+			NMO_RenderNormalview.normalmap_from_pictures_uniforms["dz"].value = 1.0 / v * (19.4 + Math.pow(2.0, document.getElementById('level_nmb').value));
 		}
 		
 		else if (element == "level"){
 			level = v;
 			NMO_RenderNormalview.normalmap_uniforms["dz"].value = 1.0 / document.getElementById('strength_nmb').value * (1.0 + Math.pow(2.0, v));
-			NMO_RenderNormalview.normalmap_from_pictures_uniforms["dz"].value = 1.0 / document.getElementById('strength_nmb').value * (1.0 + Math.pow(2.0, v));
+			NMO_RenderNormalview.normalmap_from_pictures_uniforms["dz"].value = 188.3 / document.getElementById('strength_nmb').value * (1.0 + Math.pow(2.0, v));
 		}
 
 		else if (element == "type"){
 			normal_type = v;
-			if (v == "sobel")
+			if (v == "scharr")
 				NMO_RenderNormalview.normalmap_uniforms["type"].value = 0;
 			else
 				NMO_RenderNormalview.normalmap_uniforms["type"].value = 1;
